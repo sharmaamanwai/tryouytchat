@@ -60,6 +60,14 @@ jobs:
         with:
           name: python-app
       
+      - name: List files to be deployed
+        run: |
+          echo "Files in deployment directory:"
+          ls -la
+          echo "Checking for src directory:"
+          ls -la src/ || echo "src directory not found"
+          ls -la src/infra/api/ || echo "src/infra/api directory not found"
+      
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
@@ -67,3 +75,4 @@ jobs:
           app-name: 'trialfastapi'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_31758BDA97E04C02BF7C1B9EAD2F5809 }}
+          package: .

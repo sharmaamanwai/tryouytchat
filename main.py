@@ -16,7 +16,7 @@ async def health():
 
 @app.get("/items/{item_id}")
 async def read_item(item_id: int):
-    return {"item_id": item_id, "message": f"Item {item_id} retrieved"}
+    return {"item_id": item_id, "message": f"Item {item_id} retrieved changed"}
 
 
 @app.post("/items")
